@@ -48,9 +48,9 @@ class MyApp extends StatelessWidget {
           onAddImage: (image) async {
             //perform any action after capturing each image
           },
-          onComplete: (finalImages) {
-            //Get your images list here
-          },
+
+          onComplete: (List<File> finalImages) {},
+
         )
     );
   }
