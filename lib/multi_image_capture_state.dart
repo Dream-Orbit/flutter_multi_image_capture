@@ -90,49 +90,50 @@ class _MultiImageCaptureState extends State<MultiImageCapture> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
-                      flex: 1,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          _cameraController!.setFlashMode(FlashMode.off);
-                          if (isPrimaryOn) {
-                            initSecondaryCamera();
-                          } else {
-                            initPrimaryCamera();
-                          }
-                          isPrimaryOn = !isPrimaryOn;
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          padding: const EdgeInsets.all(10),
-                          backgroundColor: widget.themePrimaryColor,
-                          // foregroundColor: Colors.red, // <-- Splash color
-                        ),
-                        child: Icon(widget.switchCameraButtonIcon,
-                            color: widget.themeSecondaryColor),
-                      )),
+                    flex: 1,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _cameraController!.setFlashMode(FlashMode.off);
+                        if (isPrimaryOn) {
+                          initSecondaryCamera();
+                        } else {
+                          initPrimaryCamera();
+                        }
+                        isPrimaryOn = !isPrimaryOn;
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        padding: const EdgeInsets.all(10),
+                        backgroundColor: widget.themePrimaryColor,
+                        // foregroundColor: Colors.red, // <-- Splash color
+                      ),
+                      child: Icon(widget.switchCameraButtonIcon,
+                          color: widget.themeSecondaryColor),
+                    )),
+                  Flexible(
+                    flex: 1,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if(capturedImages.contains(_dummyImageFile)) {
+                          captureImage(context);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        padding: const EdgeInsets.all(20),
+                        backgroundColor: widget.themePrimaryColor,
+                        //foregroundColor: Colors.red, // <-- Splash color
+                      ),
+                      child: Icon(widget.captureButtonIcon,
+                          color: widget.themeSecondaryColor),
+                    )),
                   Flexible(
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () {
-                          capturedImages.contains(_dummyImageFile)
-                              ? null
-                              : captureImage(context);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          padding: const EdgeInsets.all(20),
-                          backgroundColor: widget.themePrimaryColor,
-                          //foregroundColor: Colors.red, // <-- Splash color
-                        ),
-                        child: Icon(widget.captureButtonIcon,
-                            color: widget.themeSecondaryColor),
-                      )),
-                  Flexible(
-                      flex: 1,
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          await widget.onComplete?.call(capturedImages);
-                          Navigator.of(context).pop();
+                          widget.onComplete?.call(capturedImages).then((v){
+                            Navigator.of(context).pop();
+                          });
                         },
                         style: ElevatedButton.styleFrom(
                           shape: const CircleBorder(),
@@ -168,9 +169,7 @@ class _MultiImageCaptureState extends State<MultiImageCapture> {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             var imageFile = capturedImages.elementAt(index);
-
             bool isDummy = imageFile == _dummyImageFile;
-
             return Padding(
               padding: const EdgeInsets.only(right: 20),
               child: Stack(
@@ -182,8 +181,7 @@ class _MultiImageCaptureState extends State<MultiImageCapture> {
                     decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                          color: widget.themePrimaryColor, width: 1.5),
+                      border: Border.all(color: widget.themePrimaryColor, width: 1.5),
                     ),
                     child: isDummy
                         ? const SizedBox(
