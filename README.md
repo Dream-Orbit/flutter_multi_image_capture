@@ -5,7 +5,7 @@ Multi Image Capture is a Flutter package which can be used to capture multiple i
 ### Add Flutter Dependency
 Add the following packages under dependencies section
 ``` Dart
-  flutter_multi_image_capture: {latest version number : ex 1.0.0}
+  multi_image_capture: {latest version number : ex 1.0.1}
 ```
 Run `Flutter Pub Get` 
 
