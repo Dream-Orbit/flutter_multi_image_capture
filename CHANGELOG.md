@@ -1,3 +1,3 @@
 ## 1.0.0
 
-* TODO: Describe initial release.
+* TODO: Initial release with base feature defined in Readme.
