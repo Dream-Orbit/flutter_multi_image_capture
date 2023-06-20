@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         ),
         home: MultiImageCapture(
           title: "Camera Capture",
-          maxImages: 5,
+          /*maxImages: 5,
           preCapturedImages: [],
 
           themePrimaryColor: Colors.deepPurpleAccent,
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           removeImageButtonSize: 21,
           removeImageButtonColor: Colors.amber,
 
-          imageLimitErrorMessage: "You cannot capture more than 5 images at a time",
+          imageLimitErrorMessage: "You cannot capture more than 5 images at a time",*/
 
           onRemoveImage: (File image) async {
             /*
