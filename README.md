@@ -67,3 +67,14 @@ _Note: onRemoveImage(), onAddImage() and onComplete() are the Mandatory Paramete
 <img src="https://github.com/Dream-Orbit/flutter_multi_image_capture/blob/main/images/Screenshot_1.jpg"  width="23%" height="12%">  <img src="https://github.com/Dream-Orbit/flutter_multi_image_capture/blob/main/images/Screenshot_2.jpg"  width="23%" height="12%">  
 
 Screenshot 1 and Screenshot 2 implemented without any optional parameters. Screenshot 3 and Screenshot 4 implemented with all optional parameters
+
+## License
+
+```
+BSD 3-Clause License
+```
+Read the [LICENSE](LICENSE) file for details.
+
+## Changelog
+
+Refer to the [Changelog](CHANGELOG.md) to get all release notes.
