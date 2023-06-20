@@ -1,7 +1,8 @@
 name: multi_image_capture
-description: A new Flutter project.
-version: 0.0.1
-homepage:
+description: A easy way to capture mutiple image from camera at custom resolution. Super easy to integrate and customizable to proudct theme.
+version: 1.0.0
+repository: https://github.com/Dream-Orbit/flutter_multi_image_capture
+homepage: https://www.dreamorbit.com
 
 environment:
   sdk: '>=3.0.2 <4.0.0'
