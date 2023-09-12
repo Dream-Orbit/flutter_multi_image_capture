@@ -5,35 +5,37 @@ Multi Image Capture is a Flutter package which can be used to capture multiple i
 ### Add Flutter Dependency
 Add the following packages under dependencies section
 ``` Dart
-  multi_image_capture: {latest version number : ex 1.0.1}
+  multi_image_capture: {latest version number : ex 1.0.2}
 ```
 Run `Flutter Pub Get` 
 
 ### Basic Implementation
-Use the below code to initialie the Multi Image Capture camera screen
+Use the below code to initialise the Multi Image Capture camera screen.
 ```
-    MultiImageCapture(
-        title: "Camera Capture",
-        onRemoveImage: (File image) async {
-            /*
-                * Can Show confirmation dialog here before returning to remove image
-                * Return true; will remove image from list
-                * Return false; will keep the image unchanged
-            */
-
-            return true;
-        },
-        onAddImage: (image) async {
-            //perform any action after capturing each image
-        },
-
-        onComplete: (List<File> finalImages) {
-            
-        },
+    Navigator.of(context).push(
+        MultiImageCapture(
+            title: "Camera Capture",
+            onRemoveImage: (File image) async {
+                /*
+                    * Can Show confirmation dialog here before returning to remove image
+                    * Return true; will remove image from list
+                    * Return false; will keep the image unchanged
+                */
+    
+                return true;
+            },
+            onAddImage: (image) async {
+                //perform any action after capturing each image
+            },
+    
+            onComplete: (List<File> finalImages) {
+                
+            },
+        )
     )
 ```
 
-_Note: onRemoveImage(), onAddImage() and onComplete() are the Mandatory Parameters_
+_Note: onRemoveImage(), onAddImage() and onComplete() are the Mandatory Parameters. MultiImageCapture() can be separately put into Stateful or stateless class as given in example. Otherwise tt need to use Navigator.of().push() or if you are using GetX get.to() to push it as a screen as given in above code snippet_
 
 ### Additional Attributes (Optional Parameters)
 ```
@@ -63,10 +65,6 @@ _Note: onRemoveImage(), onAddImage() and onComplete() are the Mandatory Paramete
     // Error message when maximum number of image capture is reached
     imageLimitErrorMessage: "You cannot capture more than 5 images at a time",
 ```
-<img src="https://github.com/Dream-Orbit/flutter_multi_image_capture/blob/main/images/Screenshot_3.jpg"  width="23%" height="12%">  <img src="https://github.com/Dream-Orbit/flutter_multi_image_capture/blob/main/images/Screenshot_4.jpg"  width="23%" height="12%">
-<img src="https://github.com/Dream-Orbit/flutter_multi_image_capture/blob/main/images/Screenshot_1.jpg"  width="23%" height="12%">  <img src="https://github.com/Dream-Orbit/flutter_multi_image_capture/blob/main/images/Screenshot_2.jpg"  width="23%" height="12%">  
-
-Screenshot 1 and Screenshot 2 implemented without any optional parameters. Screenshot 3 and Screenshot 4 implemented with all optional parameters
 
 ## License
 
