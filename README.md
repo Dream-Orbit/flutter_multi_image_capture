@@ -1,30 +1,92 @@
-# Introduction
+# Flutter Multi Image Capture
 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the
-motivation behind this project.
+![drawing](https://raw.githubusercontent.com/Dream-Orbit/flutter_multi_image_capture/main/images/header_banner.png)
 
-# Getting Started
+Multi Image Capture is a Flutter package which can be used to capture multiple images from camera
+and get the list of images in return.
 
-TODO: Guide users through getting your code up and running on their own system. In this section you
-can talk about:
+### Add Flutter Dependency
 
-1. Installation process
-2. Software dependencies
-3. Latest releases
-4. API references
+Add the following packages under dependencies section
 
-# Build and Test
+``` Dart
+  multi_image_capture: {latest version number : ex 1.0.1}
+```
 
-TODO: Describe and show how to build your code and run the tests.
+Run `Flutter Pub Get`
 
-# Contribute
+### Basic Implementation
 
-TODO: Explain how other users and developers can contribute to make your code better.
+Use the below code to initialise the Multi Image Capture camera screen
 
-If you want to learn more about creating good readme files then refer the
-following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops)
-. You can also seek inspiration from the below readme files:
+```
+    MultiImageCapture(
+        title: "Camera Capture",
+        onRemoveImage: (File image) async {
+            /*
+                * Can Show confirmation dialog here before returning to remove image
+                * Return true; will remove image from list
+                * Return false; will keep the image unchanged
+            */
 
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+            return true;
+        },
+        onAddImage: (image) async {
+            //perform any action after capturing each image
+        },
+
+        onComplete: (List<File> finalImages) {
+            
+        },
+    )
+```
+
+_Note: onRemoveImage(), onAddImage() and onComplete() are the Mandatory Parameters_
+
+### Additional Attributes (Optional Parameters)
+
+```
+    // Toolbar title for the camera screen
+    title: "Camera Capture",
+    
+    // Maximum number of images that can be captured at once
+    maxImages: 5,
+    
+    // Previously captured images can be passed to resume from that point
+    preCapturedImages: [],
+
+    // Custom Theme Colors (By Default app theme colors will be taken)
+    themePrimaryColor: Colors.deepPurpleAccent,
+    themeSecondaryColor: Colors.white,
+
+    // Icons for the buttons on the camera screen
+    switchCameraButtonIcon: Icons.flip_camera_android,
+    captureButtonIcon: Icons.camera,
+    doneButtonIcon: Icons.done,
+
+    // Design elements for the image delete button
+    removeImageButtonIcon: Icons.remove,
+    removeImageButtonSize: 21,
+    removeImageButtonColor: Colors.amber,
+
+    // Error message when maximum number of image capture is reached
+    imageLimitErrorMessage: "You cannot capture more than 5 images at a time",
+```
+
+<img src="https://raw.githubusercontent.com/Dream-Orbit/flutter_multi_image_capture/main/images/Screenshot_3.jpg"  width="23%" height="12%">  <img src="https://raw.githubusercontent.com/Dream-Orbit/flutter_multi_image_capture/main/images/Screenshot_4.jpg"  width="23%" height="12%">
+<img src="https://raw.githubusercontent.com/Dream-Orbit/flutter_multi_image_capture/main/images/Screenshot_1.jpg"  width="23%" height="12%">  <img src="https://raw.githubusercontent.com/Dream-Orbit/flutter_multi_image_capture/main/images/Screenshot_2.jpg"  width="23%" height="12%">  
+
+Screenshot 1 and Screenshot 2 implemented without any optional parameters. Screenshot 3 and
+Screenshot 4 implemented with all optional parameters
+
+## License
+
+```
+BSD 3-Clause License
+```
+
+Read the [LICENSE](LICENSE) file for details.
+
+## Changelog
+
+Refer to the [Changelog](CHANGELOG.md) to get all release notes.

@@ -1,3 +1,7 @@
-## 0.0.1
+## 1.0.2
 
-* TODO: Describe initial release.
+* Added header banner in README.md
+
+## 1.0.1
+
+* TODO: Basic code optimization.
