@@ -19,22 +19,33 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: MultiImageCapture(
+          // Toolbar title for the camera screen
           title: "Camera Capture",
-          maxImages: 5,
-          preCapturedImages: [],
 
+          // Maximum number of images that can be captured at once
+          maxImages: 5,
+
+          // Previously captured images can be passed to resume from that point
+          preCapturedImages: const [],
+
+          // Custom Theme Colors (By Default app theme colors will be taken)
           themePrimaryColor: Colors.deepPurpleAccent,
           themeSecondaryColor: Colors.white,
 
+          // Icons for the buttons on the camera screen
           switchCameraButtonIcon: Icons.flip_camera_android,
           captureButtonIcon: Icons.camera,
           doneButtonIcon: Icons.done,
 
+          // Design elements for the image delete button
           removeImageButtonIcon: Icons.remove,
           removeImageButtonSize: 21,
           removeImageButtonColor: Colors.amber,
 
+          // Error message when maximum number of image capture is reached
           imageLimitErrorMessage: "You cannot capture more than 5 images at a time",
+
+          //MANDATORY FIELDS
 
           onRemoveImage: (File image) async {
             /*

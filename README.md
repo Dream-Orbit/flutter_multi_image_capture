@@ -2,49 +2,44 @@
 
 ![drawing](https://raw.githubusercontent.com/Dream-Orbit/flutter_multi_image_capture/main/images/header_banner.png)
 
-Multi Image Capture is a Flutter package which can be used to capture multiple images from camera
-and get the list of images in return.
-
+Multi Image Capture is a Flutter package which can be used to capture multiple images from camera and get the list of images in return.
+   
 ### Add Flutter Dependency
-
 Add the following packages under dependencies section
-
 ``` Dart
-  multi_image_capture: {latest version number : ex 1.0.1}
+  multi_image_capture: {latest version number : ex 1.0.2}
 ```
-
-Run `Flutter Pub Get`
+Run `Flutter Pub Get` 
 
 ### Basic Implementation
-
-Use the below code to initialise the Multi Image Capture camera screen
-
+Use the below code to initialise the Multi Image Capture camera screen.
 ```
-    MultiImageCapture(
-        title: "Camera Capture",
-        onRemoveImage: (File image) async {
-            /*
-                * Can Show confirmation dialog here before returning to remove image
-                * Return true; will remove image from list
-                * Return false; will keep the image unchanged
-            */
-
-            return true;
-        },
-        onAddImage: (image) async {
-            //perform any action after capturing each image
-        },
-
-        onComplete: (List<File> finalImages) {
-            
-        },
+    Navigator.of(context).push(
+        MultiImageCapture(
+            title: "Camera Capture",
+            onRemoveImage: (File image) async {
+                /*
+                    * Can Show confirmation dialog here before returning to remove image
+                    * Return true; will remove image from list
+                    * Return false; will keep the image unchanged
+                */
+    
+                return true;
+            },
+            onAddImage: (image) async {
+                //perform any action after capturing each image
+            },
+    
+            onComplete: (List<File> finalImages) {
+                
+            },
+        )
     )
 ```
 
-_Note: onRemoveImage(), onAddImage() and onComplete() are the Mandatory Parameters_
+_Note: onRemoveImage(), onAddImage() and onComplete() are the Mandatory Parameters. MultiImageCapture() can be separately put into Stateful or stateless class as given in example. Otherwise tt need to use Navigator.of().push() or if you are using GetX get.to() to push it as a screen as given in above code snippet_
 
 ### Additional Attributes (Optional Parameters)
-
 ```
     // Toolbar title for the camera screen
     title: "Camera Capture",
@@ -84,7 +79,6 @@ Screenshot 4 implemented with all optional parameters
 ```
 BSD 3-Clause License
 ```
-
 Read the [LICENSE](LICENSE) file for details.
 
 ## Changelog
